@@ -3,12 +3,12 @@ async function fetchAxies() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-API-Key': 'vjpF0EKi39qzdfpPoqggdmNR5cvP01dN'
+            'X-API-Key': 'CfY9CRVz9SmvhtoCXfC53MybY3ZhJ3qU'
         },
         body: JSON.stringify({
             query: `
             query MyQuery {
-                axies(auctionType: All, sort: IdDesc, size: 2000) {
+                axies(auctionType: All, sort: IdDesc, size: 1400) {
                     results {
                         id
                         sireId
@@ -26,7 +26,6 @@ async function fetchAxies() {
             `,
         }),
     });
-
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
