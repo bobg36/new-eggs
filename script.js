@@ -3,7 +3,7 @@ async function fetchAxies() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-API-Key': 'CfY9CRVz9SmvhtoCXfC53MybY3ZhJ3qU'
+            'X-API-Key': 'vjpF0EKi39qzdfpPoqggdmNR5cvP01dN'
         },
         body: JSON.stringify({
             query: `
