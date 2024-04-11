@@ -8,7 +8,7 @@ async function fetchAxies() {
         body: JSON.stringify({
             query: `
             query MyQuery {
-                axies(auctionType: All, sort: IdDesc, size: 1400) {
+                axies(auctionType: All, sort: IdDesc, size: 2000) {
                     results {
                         id
                         sireId
@@ -67,13 +67,23 @@ async function displayAxies() {
             const axieMarketplaceUrl = `https://app.axieinfinity.com/marketplace/axies/${axie.id}`;
             const axieP1Url = `https://app.axieinfinity.com/marketplace/axies/${axie.sireId}`;
             const axieP2Url = `https://app.axieinfinity.com/marketplace/axies/${axie.matronId}`;
-            const playerProfileUrl = `https://app.axieinfinity.com/profile/${axie.ownerProfile.addresses.ronin}/axies/`;
-
+        
+            // Check if ownerProfile and addresses exist and are not null
+            let playerProfileUrl = "#";
+            if (axie.ownerProfile && axie.ownerProfile.addresses && axie.ownerProfile.addresses.ronin) {
+                playerProfileUrl = `https://app.axieinfinity.com/profile/${axie.ownerProfile.addresses.ronin}/axies/`;
+            } else {
+                // If there's no addresses, log the Axie's id for further investigation
+                console.log(`Missing addresses for Axie ID: ${axie.id}`, axie);
+                // Optionally, log the entire Axie object for more details
+                // console.log('Axie with missing addresses:', axie);
+            }
+        
             const element = document.createElement('div');
             element.className = 'axie';
             element.innerHTML = `
                 <h2><a href="${axieMarketplaceUrl}" target="_blank" rel="noopener noreferrer">${axie.id}</a></h2>
-                <h2><a href="${playerProfileUrl}" target="_blank" rel="noopener noreferrer">${axie.ownerProfile.name}</a></h2>
+                <h2><a href="${playerProfileUrl}" target="_blank" rel="noopener noreferrer">${axie.ownerProfile ? axie.ownerProfile.name : 'Unknown'}</a></h2>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: ${progress}%"></div>
                     <div class="progress-bar-text">${remainingTime}</div>
@@ -95,6 +105,7 @@ async function displayAxies() {
             `;
             container.appendChild(element);
         });
+        
     } catch (error) {
         console.error("Failed to fetch Axies:", error);
         document.getElementById('axies-container').innerHTML = `<p>Error fetching data. Please try again later.</p>`;
