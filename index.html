@@ -3,12 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recent Eggs</title>
+    <title>Axie Infinity Egg Viewer</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/bird-bird.png" type="image/x-icon">
 </head>
 <body>
-    <div id="axies-container"></div>
+    <div id="login-screen">
+        <div class="login-container">
+            <h2>Enter Password</h2>
+            <input type="password" id="password-input" placeholder="Enter password">
+            <button id="login-button">Login</button>
+            <p id="login-error" style="color: red; display: none;">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <!-- Your existing content goes here -->
+        <header id="egg-stats"></header>
+        <div id="filter-container">
+            <input type="text" id="ronin-filter" placeholder="Enter Ronin address (0x...)">
+            <button id="apply-filter">Filter</button>
+            <button id="clear-filter">Clear Filter</button>
+            <button id="toggle-analysis">Biggest Breeders</button>
+        </div>
+        <div id="analysis-overlay" style="display: none;">
+            <div id="wallet-analysis"></div>
+        </div>
+        <div id="axies-container"></div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
