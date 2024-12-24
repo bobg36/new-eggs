@@ -5,52 +5,194 @@
     box-sizing: border-box;
 }
 
+#login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.login-container {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+#password-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+#login-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#login-button:hover {
+    background-color: #45a049;
+}
+
+#analysis-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#wallet-analysis {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+#wallet-analysis table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#wallet-analysis th, #wallet-analysis td {
+    border: 1px solid #666;
+    padding: 8px;
+    text-align: left;
+}
+
+#wallet-analysis th {
+    background-color: #444;
+}
+
+#toggle-analysis {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #333; /* Darker grey for the background */
-    color: #fff; /* White text */
+    background-color: #333;
+    color: #fff;
     line-height: 1;
+}
+
+#egg-stats {
+    background-color: #2c2c2c;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#egg-stats h2, #egg-stats h3, #egg-stats h4 {
+    margin: 5px 0;
+}
+
+#filter-container {
+    background-color: #2c2c2c;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#ronin-filter {
+    padding: 8px;
+    width: 300px;
+    margin-right: 10px;
+    border: 1px solid #666;
+    background-color: #444;
+    color: #fff;
+}
+
+#apply-filter, #clear-filter {
+    padding: 8px 15px;
+    background-color: #38963b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#clear-filter {
+    background-color: #963b38;
+}
+
+#apply-filter:hover, #clear-filter:hover {
+    background-color: #2c7a2e;
+}
+
+#clear-filter:hover {
+    background-color: #7a2c2e;
 }
 
 #axies-container {
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(10, minmax(0, 1fr));
     gap: 3px;
     padding: 3px;
-    overflow-x: hidden; /* Hide horizontal overflow */
+    overflow-x: hidden;
+    margin-top: 20px;
 }
 
 .axie {
     margin: 0;
     padding: 0;
-    background-color: #4d4d4d; /* Medium grey for Axie cards */
-    border: 2px solid #666; /* Darker grey for border */
+    background-color: #4d4d4d;
+    border: 2px solid #666;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
 }
 
 a {
-    color: #fff; /* White text for links */
-    text-decoration: none; /* Remove underline from links */
+    color: #fff;
+    text-decoration: none;
 }
 
-/* Prevent wrapping and ensure text stays on one line */
 .axie h2 {
     margin: 0;
-    padding: 0 5px; /* Added padding for some spacing */
+    padding: 0 5px;
     font-size: 11px;
-    color: #fff; /* Ensure text is white */
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide text that overflows the element's box */
-    text-overflow: ellipsis; /* Show ellipsis (...) when text overflows */
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .image-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 10px;
     padding: 0;
 }
 
@@ -75,12 +217,30 @@ a {
     bottom: 0;
     width: 100%;
     text-align: center;
-    color: #fff; /* White text */
-    background-color: rgba(0,0,0,0.5); /* Semi-transparent black for readability */
+    color: #fff;
+    background-color: rgba(189, 189, 189, 0.5);
     font-size: 12px;
     margin: 0;
     padding: 5px 0;
     z-index: 1;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #aaa;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #38963b;
+    width: 0;
+}
+
+.progress-bar-text {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
 }
 
 /* Adjustments for small screens */
@@ -92,22 +252,4 @@ a {
     .image-container {
         flex-direction: column;
     }
-}
-
-.progress-bar-container {
-    width: 100%;
-    background-color: #aaa; /* Lighter grey for progress bar background */
-}
-
-.progress-bar {
-    height: 10px;
-    background-color: #38963b; /* Green */
-    width: 0; /* Start width, will be set dynamically */
-}
-
-.progress-bar-text {
-    position: absolute;
-    text-align: center;
-    color: #fff; /* White text for contrast */
-    font-size: 10px;
 }
